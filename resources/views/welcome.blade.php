@@ -5,10 +5,11 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Welcome</div>
+                <div class="panel-heading">Selamat Datang</div>
 
                 <div class="panel-body">
-                    Your Application's Landing Page.
+                    <h2>Selamat Datang di Uangku</h2><br>
+                    <i>Catat keuangan mu!</i>
                 </div>
             </div>
         </div>
