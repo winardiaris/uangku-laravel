@@ -18,3 +18,16 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+
+Route::get('/data/add', 'DataController@create');
+Route::post('/data/store', 'DataController@store');
+Route::get('/data', 'DataController@index');
+Route::get('/data/edit/{id}', function($id) {
+  $data = App\Data::findOrFail($id);
+  return view('data.edit', compact('data'));
+});
+
+Route::get('/user', 'UsersController@index');
+Route::get('/user/setting', 'UsersController@edit');
+Route::get('/user/update', 'UsersController@update');
