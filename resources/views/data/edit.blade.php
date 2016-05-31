@@ -6,7 +6,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Edit</div>
                 <div class="panel-body">
-                  {!! Form::model($data, ['route' => ['data.update', $data], 'method'=>'PUT'])!!}
+                  {!! Form::model($data, ['route' => ['data.update', $data], 'method'=>'PUT','files'=>true])!!}
 
                   @include('data.form')
                   <div class="col-lg-12">

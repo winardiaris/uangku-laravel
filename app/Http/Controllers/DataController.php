@@ -119,6 +119,15 @@ class DataController extends Controller
     public function update(Request $request, $id,PsrLoggerInterface $log)
     {
       $data = \App\Data::findOrFail($id);
+      if ($request->hasFile('token_img')) {
+        $photo = $request->file('token_img');
+        $filename = str_random(6) . "." . $photo->getClientOriginalExtension();
+        $path = public_path() . '/img';
+        $photo->move($path, $filename);
+
+        $request['token_image']=$filename;
+      }
+
       $data->update($request->all());
       $log->info("Data telah diperbaharui. ID: " . $id);
       return redirect()->route('data.index');
