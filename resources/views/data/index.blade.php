@@ -18,7 +18,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach(App\Data::all() as $data )
+                      @foreach($data as $data )
                       <tr>
                         <td><a href="{{ route('data.show', $data) }}">{{$data->date}}</a></td>
                         <td>{{$data->value}}</td>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Psr\Log\LoggerInterface as PsrLoggerInterface;
 
 use App\Http\Requests;
+use Auth;
 
 class DataController extends Controller
 {
@@ -21,7 +22,9 @@ class DataController extends Controller
      */
     public function index()
     {
-        return view('data.index');
+        $users_id =  Auth::user()->id;
+        $data = \App\Data::where('users_id',$users_id)->get();
+        return view('data.index',['data' => $data]);
     }
 
     /**
@@ -43,6 +46,8 @@ class DataController extends Controller
     public function store(Request $request)
     {
 
+      $users_id =  Auth::user()->id;
+      $request['users_id']=$users_id;
 
       if ($request->hasFile('token_img')) {
         $photo = $request->file('token_img');
@@ -116,8 +121,10 @@ class DataController extends Controller
     }
 
     public function getSaldo(){
-      $in = \App\Data::where('type','in')->select('value')->sum('value');
-      $out = \App\Data::where('type','out')->select('value')->sum('value');
+      $users_id =  Auth::user()->id;
+
+      $in = \App\Data::where('type','in')->where('users_id',$users_id)->select('value')->sum('value');
+      $out = \App\Data::where('type','out')->where('users_id',$users_id)->select('value')->sum('value');
       $saldo = (int)$in - (int)$out;
       return $saldo;
     }
