@@ -26,7 +26,7 @@
                     </tr>
                   </table>
                 </div>
-                <div class="panel-footer"><a href="{{ route('data.index') }}">Kembali</a></div>
+                <div class="panel-footer"><a href="{{ route('data.index') }}" class="btn btn-xs btn-default">Kembali</a></div>
             </div>
         </div>
     </div>

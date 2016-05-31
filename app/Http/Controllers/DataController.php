@@ -14,6 +14,7 @@ class DataController extends Controller
     public function __construct(PsrLoggerInterface $log)
     {
       $this->log = $log;
+      $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -22,9 +23,25 @@ class DataController extends Controller
      */
     public function index()
     {
-        $users_id =  Auth::user()->id;
+      $search = \Request::get('s'); //<-- we use global request to get the param of URI
+      $users_id =  Auth::user()->id;
+
+      if(isset($search)){
+        $data = \App\Data::where('users_id',$users_id)
+                ->where(function($query){
+                  $search = \Request::get('s');
+                  $query->orWhere('desc','like','%'.$search.'%')
+                  ->orWhere('value','like','%'.$search.'%')
+                  ->orWhere('date','like','%'.$search.'%')
+                  ->orWhere('token','like','%'.$search.'%');
+                })
+                ->orderBy('date','desc')
+                ->get();
+      }else{
         $data = \App\Data::where('users_id',$users_id)->get();
-        return view('data.index',['data' => $data]);
+      }
+    // dd($data);
+   return view('data.index',['data' => $data]);
     }
 
     /**

@@ -88,8 +88,13 @@
     $.get( "{{url('/saldo')}}", function( data ) {
       var saldo = data.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
       $( "#saldo" ).html( "Rp. "+ saldo );
-      // alert( "Load was performed." );
+      $( "#saldoData" ).html( "Rp. "+ saldo );
     });
+    $('.rp').each(function(){
+        text = $(this).text().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+        $(this).html(text);
+    });
+
     </script>
 </body>
 </html>
