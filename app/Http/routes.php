@@ -23,4 +23,4 @@ Route::get('/saldo','DataController@getSaldo');
 
 Route::get('/user', 'UsersController@index');
 Route::get('/user/setting', 'UsersController@edit');
-Route::get('/user/update', 'UsersController@update');
+Route::post('/user/update', 'UsersController@update');

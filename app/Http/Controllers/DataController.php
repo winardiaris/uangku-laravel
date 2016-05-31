@@ -72,7 +72,7 @@ class DataController extends Controller
         $path = public_path() . '/img';
         $photo->move($path, $filename);
 
-        $request['token_image']="img/".$filename;
+        $request['token_image']=$filename;
 
         // \App\Data::create($request);
         // return dd($request->all());
