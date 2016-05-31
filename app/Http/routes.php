@@ -11,22 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', 'HomeController@welcome');
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
+Route::resource('data', 'DataController');
+Route::get('/saldo','DataController@getSaldo');
 
-Route::get('/data/add', 'DataController@create');
-Route::post('/data/store', 'DataController@store');
-Route::get('/data', 'DataController@index');
-Route::get('/data/edit/{id}', function($id) {
-  $data = App\Data::findOrFail($id);
-  return view('data.edit', compact('data'));
-});
 
 Route::get('/user', 'UsersController@index');
 Route::get('/user/setting', 'UsersController@edit');

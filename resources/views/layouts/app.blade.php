@@ -49,7 +49,7 @@
                   @if (Auth::user())
                   <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}"><small><i class="fa fa-home"></i></small> Home</a></li>
-                    <li><a href="{{ url('/data/add') }}"><small><i class="fa fa-plus"></i></small> Tambah</a></li>
+                    <li><a href="{{ route('data.create') }}"><small><i class="fa fa-plus"></i></small> Tambah</a></li>
                     <li><a href="{{ url('/data') }}"><small><i class="fa fa-table"></i></small> Data</a></li>
                   </ul>
                   @endif
@@ -61,7 +61,7 @@
                         <li><a href="{{ url('/login') }}">Masuk</a></li>
                         <li><a href="{{ url('/register') }}">Daftar</a></li>
                     @else
-                        <li><a href="#">Rp. 99.999.99,-</a></li>
+                        <li><a href="#" id="saldo"></a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
@@ -84,5 +84,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    <script>
+    $.get( "{{url('/saldo')}}", function( data ) {
+      var saldo = data.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+      $( "#saldo" ).html( "Rp. "+ saldo +",-" );
+      // alert( "Load was performed." );
+    });
+    </script>
 </body>
 </html>

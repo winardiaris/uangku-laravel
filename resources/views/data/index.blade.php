@@ -20,11 +20,16 @@
                     <tbody>
                       @foreach(App\Data::all() as $data )
                       <tr>
-                        <td>{{$data->date}}</td>
+                        <td><a href="{{ route('data.show', $data) }}">{{$data->date}}</a></td>
                         <td>{{$data->value}}</td>
                         <td>{{$data->desc}}</td>
                         <td>{{$data->type}}</td>
-                        <td><a href="/data/edit/{{$data->id}}" class="btn btn-primary"> Ubah<a/>
+                        <td>
+                          {!! Form::model($data, ['route' => ['data.destroy', $data], 'method'=>'delete', 'class' => 'form-inline'])!!}
+                          <a href="{{ route('data.edit', $data) }}" class="btn btn-xs btn-primary">Ubah</a>
+                          {!! Form::submit('Hapus', ['class'=>'btn btn-xs btn-danger']) !!}
+                          {!! Form::close() !!}
+                        </td>
                       </tr>
                       @endforeach
 

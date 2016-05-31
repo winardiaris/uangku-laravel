@@ -6,7 +6,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Tambah</div>
                 <div class="panel-body">
-                  {!! Form::open([ 'url' => '/data/store' ]) !!}
+                  {!! Form::open([ 'route' => 'data.store','files'=>true]) !!}
 
                   @include('data.form')
                   <div class="col-lg-12">

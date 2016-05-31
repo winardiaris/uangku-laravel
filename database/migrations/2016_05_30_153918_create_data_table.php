@@ -17,7 +17,8 @@ class CreateDataTable extends Migration
         $table->integer('users_id');
         $table->date('date');
         $table->string('token',100);
-        $table->string('type',2);
+        $table->string('token_image',255);
+        $table->enum('type', ['in', 'out']);
         $table->double('value');
         $table->longText('desc');
         $table->string('status',1);

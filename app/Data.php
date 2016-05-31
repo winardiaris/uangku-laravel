@@ -8,6 +8,6 @@ class Data extends Model
 {
     //
     protected $fillable = [
-        'users_id', 'value', 'token','date','desc','status','type',
+        'users_id', 'value', 'token','token_image','date','desc','status','type',
     ];
 }

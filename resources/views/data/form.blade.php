@@ -25,8 +25,8 @@
 </div>
 <div class="col-lg-6">
   <div class="form-group">
-    {!! Form::label('token_image', 'Photo Bukti:', ['class' => 'control-label']) !!}
-    {!! Form::file('token_image', null, ['class' => 'form-control']) !!}
+    {!! Form::label('token_img', 'Photo Bukti:', ['class' => 'control-label']) !!}
+    {!! Form::file('token_img', null, ['class' => 'form-control']) !!}
   </div>
 </div>
 <div class="col-lg-12">
