@@ -9,7 +9,7 @@
                 <div class="panel-body">
                   <table class="table table-condensed">
                     <tr>
-                      <th>Tanggal</th>
+                      <th >Tanggal</th>
                       <td>{{ $data->date }}</td>
                     </tr>
                     <tr>
@@ -18,15 +18,34 @@
                     </tr>
                     <tr>
                       <th>Jumlah</th>
-                      <td>{{ $data->value }}</td>
+                      <td><span class="rp">Rp. {{ $data->value }}</span></td>
+                    </tr>
+                    <tr>
+                      <th>No Bukti</th>
+                      <td>{{ $data->token }}</td>
+                    </tr>
+                    <tr>
+                      <th>Bukti Gambar</th>
+                      <td><a href="{{ asset('img/') }}/{{ $data->token_image }}">Lihat></a></td>
+                    </tr>
+                    <tr>
+                      <th>Keterangan</th>
+                      <td>{{ $data->desc }}</td>
                     </tr>
                     <tr>
                       <th>Tanggal input</th>
-                      <td>{{ $data->created_at->format('M d, Y') }}</td>
+                      <td>{{ $data->created_at->format('Y-m-d H:i:s') }}</td>
+                    </tr>
+                    <tr>
+                      <th>Tanggal ubah</th>
+                      <td>{{ $data->updated_at->format('Y-m-d H:i:s') }}</td>
                     </tr>
                   </table>
                 </div>
-                <div class="panel-footer"><a href="{{ route('data.index') }}" class="btn btn-xs btn-default">Kembali</a></div>
+                <div class="panel-footer">
+                  <a href="{{ route('data.index') }}" class="btn btn-xs btn-default">Kembali</a>
+                  <a href="{{ route('data.edit', $data) }}" class="btn btn-xs btn-primary">Ubah</a>
+                </div>
             </div>
         </div>
     </div>

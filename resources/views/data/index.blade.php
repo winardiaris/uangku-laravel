@@ -14,6 +14,7 @@
                       <tr>
                         <th width="100px">Tanggal</th>
                         <th width="50px">Tipe</th>
+                        <th width="100px">No Bukti</th>
                         <th width="150px">Jumlah</th>
                         <th>Keterangan</th>
                         <th width="100px"></th>
@@ -24,6 +25,7 @@
                       <tr>
                         <td><a href="{{ route('data.show', $data) }}">{{$data->date}}</a></td>
                         <td>{{$data->type}}</td>
+                        <td>{{$data->token}}</td>
                         <td align="right"class="rp">{{$data->value}}</td>
                         <td>{{$data->desc}}</td>
                         <td>
