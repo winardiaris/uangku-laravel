@@ -97,27 +97,17 @@
 
     </script>
     @if (Request::route()->getName() == 'data.index')
-      @if (Request::has('dari') and Request::has('ke'))
         <script>
-            console.log("search dari ke");
-            $.get( "{{url('/g?op=getsaldodarike')}}&dari={{Request::get('dari')}}&ke={{Request::get('ke')}}", function( data ) {
-              var saldo = data.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-              $( "#saldoData" ).html( "Rp. "+ saldo );
-            });
-        </script>
-      @else
-        <script>
-        $.get( "{{url('/g?op=getsaldo')}}", function( data ) {
-          var saldo = data.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-          $( "#saldoData" ).html( "Rp. "+ saldo );
+        $.get( "{{url('/g?op=gettahundata')}}", function( data ) {
+          var json = $.parseJSON(data);
+          console.log("banyak tahun: "+json.length);
+            for(var i = 0; i <json.length;i++){
+                $('#tahun').append('<option value="'+json[i]+'">'+json[i]+'</option>');
+            }
+            /* $( "#tahun" ).html( data ); */
+
         });
         </script>
-      @endif
-
-
-      <script>
-      console.log("data");
-      </script>
     @endif
 
 </body>

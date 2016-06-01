@@ -31,10 +31,7 @@
 {!! Form::open(['method'=>'GET','url'=>$url,'class'=>'navbar-form navbar-left','role'=>'search'])  !!}
 <label>Tahun:</label>
 <div class="input-group custom-search-form">
-  <select class="form-control" name="tahun">
-    <option value="0">
-      -- Pilih --
-    </option>
+  <select class="form-control" name="tahun" id="tahun">
   </select>
   <span class="input-group-btn">
     <button class="btn btn-default-sm" type="submit">

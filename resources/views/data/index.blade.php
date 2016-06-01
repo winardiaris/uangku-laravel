@@ -41,8 +41,13 @@
                       @endforeach
                     </tbody>
                   </table>
-                  {{-- //KERJAKAN saldo berdasarkan search--}}
-                    <div class="text-right"> Saldo:    <b><span id="saldoData" style="margin-left:30px;"></span></b></div>
+                  {{-- //SELESAI saldo berdasarkan search--}}
+                 <div class="text-right">Saldo: <b><span class="rp" style="margin-left:30px"> 
+                   @if (Request::route()->getName() == 'data.index')
+                      {{$data->where('type','in')->sum('value')-$data->where('type','out')->sum('value')}}
+                   @endif
+                </span></b></div>
+    
                   <hr>
                   {{-- //SELESAI Pagination --}}
                   {{ $data->links() }}

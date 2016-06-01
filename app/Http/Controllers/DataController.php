@@ -25,6 +25,7 @@ class DataController extends Controller
       $search = \Request::get('s'); //<-- use global request
       $dari = \Request::get('dari'); //<-- use global request
       $ke = \Request::get('ke'); //<-- use global request
+      $tahun = \Request::get('tahun'); //<-- use global request
       $users_id =  Auth::user()->id;
 
       if(isset($search)){
@@ -44,6 +45,11 @@ class DataController extends Controller
         $ke = \Request::get('ke'); //<-- use global request
         $data = \App\Data::where('users_id',$users_id)->whereBetween('date',[$dari,$ke])->orderBy('date','desc')->paginate(30);
       }
+      elseif (isset($tahun)) { //SELESAI search tahun
+        $tahun = \Request::get('tahun'); //<-- use global request
+        $data = \App\Data::where('users_id',$users_id)->where('date','like','%'.$tahun.'%')->orderBy('date','desc')->paginate(30);
+      }
+
       else{
         $data = \App\Data::where('users_id',$users_id)->orderBy('date','desc')->paginate(30);
       }
@@ -162,16 +168,16 @@ class DataController extends Controller
       return $saldo;
     }
 
-    public function getSaldoDariKe(){
+    public function getTahunData(){
       $users_id =  Auth::user()->id;
-      $dari = \Request::get('dari'); //<-- use global request
-      $ke = \Request::get('ke'); //<-- use global request
-
-      $in = \App\Data::where('type','in')->where('users_id',$users_id)->whereBetween('date',[$dari,$ke])->select('value')->sum('value');
-      $out = \App\Data::where('type','out')->where('users_id',$users_id)->whereBetween('date',[$dari,$ke])->select('value')->sum('value');
-      $saldo = (int)$in - (int)$out;
-
-      return $saldo;
+      $arr = array();
+      $tahun = \App\Data::where('users_id',$users_id)->select('date')->get();
+      foreach($tahun as $date){
+       $t = explode('-',$date['date']); 
+        array_push($arr,$t[0]);
+      }
+      $return = array_unique($arr);
+      return json_encode($return);
     }
 
     public function g(){
@@ -181,8 +187,8 @@ class DataController extends Controller
         case 'getsaldo':
           return $this->getSaldo();
           break;
-        case 'getsaldodarike':
-          return $this->getSaldoDariKe();
+        case 'gettahundata':
+          return $this->getTahunData();
           break;
 
         default:
