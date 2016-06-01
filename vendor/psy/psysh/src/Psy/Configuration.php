@@ -350,7 +350,7 @@ class Configuration
         }
 
         // Deprecation warning for incorrect psysh_history path.
-        // TODO: remove this before v0.8.0
+        // TODO:300 remove this before v0.8.0
         $xdg = new Xdg();
         $oldHistory = $xdg->getHomeConfigDir() . '/psysh_history';
         if (@is_file($oldHistory)) {
@@ -633,7 +633,7 @@ class Configuration
             return $this->useUnicode;
         }
 
-        // TODO: detect `chsh` != 65001 on Windows and return false
+        // TODO:180 detect `chsh` != 65001 on Windows and return false
         return true;
     }
 

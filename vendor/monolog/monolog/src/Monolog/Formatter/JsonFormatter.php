@@ -169,7 +169,7 @@ class JsonFormatter extends NormalizerFormatter
      */
     protected function normalizeException($e)
     {
-        // TODO 2.0 only check for Throwable
+        // TODO:10 2.0 only check for Throwable
         if (!$e instanceof Exception && !$e instanceof \Throwable) {
             throw new \InvalidArgumentException('Exception/Throwable expected, got '.gettype($e).' / '.get_class($e));
         }

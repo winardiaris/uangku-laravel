@@ -257,7 +257,7 @@ abstract class CacheTest extends \Doctrine\Tests\DoctrineTestCase
         $cache = $this->_getCacheDriver();
         $cache->save('expire', 'value', 1);
         $this->assertTrue($cache->contains('expire'), 'Data should not be expired yet');
-        // @TODO should more TTL-based tests pop up, so then we should mock the `time` API instead
+        // @TODO:310 should more TTL-based tests pop up, so then we should mock the `time` API instead
         sleep(2);
         $this->assertFalse($cache->contains('expire'), 'Data should be expired');
     }
@@ -266,7 +266,7 @@ abstract class CacheTest extends \Doctrine\Tests\DoctrineTestCase
     {
         $cache = $this->_getCacheDriver();
         $cache->save('noexpire', 'value', 0);
-        // @TODO should more TTL-based tests pop up, so then we should mock the `time` API instead
+        // @TODO:320 should more TTL-based tests pop up, so then we should mock the `time` API instead
         sleep(1);
         $this->assertTrue($cache->contains('noexpire'), 'Data with lifetime of zero should not expire');
     }

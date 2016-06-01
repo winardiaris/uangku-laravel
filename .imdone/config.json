@@ -1,0 +1,57 @@
+{
+  "exclude": [
+    "^(node_modules|bower_components|\\.imdone|target|build|dist|logs|vendor)[\\/\\\\]?|\\.(git|svn|hg|npmignore)|\\~$|\\.(jpg|png|gif|swp|ttf|otf)$"
+  ],
+  "watcher": true,
+  "keepEmptyPriority": true,
+  "code": {
+    "include_lists": [
+      "LAKUKAN",
+      "KERJAKAN",
+      "SELESAI",
+      "RENCANA",
+      "BENARKAN",
+      "ARSIP",
+      "HACK",
+      "DIUBAH",
+      "XXX",
+      "IDE",
+      "CATATAN",
+      "REVIEW"
+    ]
+  },
+  "lists": [
+    {
+      "name": "KERJAKAN",
+      "hidden": true
+    },
+    {
+      "name": "CATATAN",
+      "hidden": true
+    },
+    {
+      "name": "XXX",
+      "hidden": false
+    },
+    {
+      "name": "Warning",
+      "hidden": true
+    },
+    {
+      "name": "BENERIN",
+      "hidden": false
+    },
+    {
+      "name": "bar",
+      "hidden": true
+    }
+  ],
+  "marked": {
+    "gfm": true,
+    "tables": true,
+    "breaks": true,
+    "pedantic": true,
+    "smartLists": true,
+    "langPrefix": "language-"
+  }
+}

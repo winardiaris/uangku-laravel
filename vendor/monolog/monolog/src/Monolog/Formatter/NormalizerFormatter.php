@@ -90,7 +90,7 @@ class NormalizerFormatter implements FormatterInterface
         }
 
         if (is_object($data)) {
-            // TODO 2.0 only check for Throwable
+            // TODO:30 2.0 only check for Throwable
             if ($data instanceof Exception || (PHP_VERSION_ID > 70000 && $data instanceof \Throwable)) {
                 return $this->normalizeException($data);
             }
@@ -115,7 +115,7 @@ class NormalizerFormatter implements FormatterInterface
 
     protected function normalizeException($e)
     {
-        // TODO 2.0 only check for Throwable
+        // TODO:40 2.0 only check for Throwable
         if (!$e instanceof Exception && !$e instanceof \Throwable) {
             throw new \InvalidArgumentException('Exception/Throwable expected, got '.gettype($e).' / '.get_class($e));
         }

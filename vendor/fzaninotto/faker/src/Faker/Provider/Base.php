@@ -516,7 +516,7 @@ class Base
     public function optional($weight = 0.5, $default = null)
     {
         // old system based on 0.1 <= $weight <= 0.9
-        // TODO: remove in v2
+        // TODO:290 remove in v2
         if ($weight > 0 && $weight < 1 && mt_rand() / mt_getrandmax() <= $weight) {
             return $this->generator;
         }

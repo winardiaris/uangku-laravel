@@ -196,7 +196,7 @@ class ResultCacheStatement implements \IteratorAggregate, ResultStatement
     {
         $row = $this->fetch(PDO::FETCH_NUM);
         if (!isset($row[$columnIndex])) {
-            // TODO: verify this is correct behavior
+            // TODO:440 verify this is correct behavior
             return false;
         }
 

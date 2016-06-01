@@ -30,7 +30,7 @@ class TraitEnumerator extends Enumerator
 
         // only list traits when no Reflector is present.
         //
-        // TODO: make a NamespaceReflector and pass that in for commands like:
+        // TODO:270 make a NamespaceReflector and pass that in for commands like:
         //
         //     ls --traits Foo
         //

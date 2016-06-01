@@ -145,7 +145,7 @@ class DataController extends Controller
       return redirect()->route('data.index');
     }
 
-    public function getSaldo(){
+    public function getSaldo(){//melihatkan saldo
       $users_id =  Auth::user()->id;
 
       $in = \App\Data::where('type','in')->where('users_id',$users_id)->select('value')->sum('value');
