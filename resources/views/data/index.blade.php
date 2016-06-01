@@ -9,6 +9,9 @@
                 <div class="panel-body">
 
                   @include('data.search',['url'=>'data','link'=>'data'])
+                  {{-- //KERJAKAN select tanggal dari ke--}}
+                  {{-- //KERJAKAN select Bulan Tahun --}}
+                  {{-- //KERJAKAN select Tahun --}}
                   <table class='table table-striped table-bordered table-hover table-condensed'>
                     <thead>
                       <tr>
@@ -38,8 +41,10 @@
                       @endforeach
                     </tbody>
                   </table>
+                  {{-- //KERJAKAN saldo berdasarkan search--}}
                     <div class="text-right"> Saldo:    <b><span id="saldoData" style="margin-left:30px;"></span></b></div>
                   <hr>
+                  {{-- //SELESAI Pagination --}}
                   {{ $data->links() }}
                 </div>
             </div>

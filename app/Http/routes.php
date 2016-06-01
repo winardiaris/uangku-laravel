@@ -18,7 +18,7 @@ Route::get('/home', 'HomeController@index');
 // Route::get('/', ['as' => 'index', 'middleware' => 'web', 'uses' => 'HomeController@index']);
 // Route::resource('data', ['as' => 'data', 'middleware' => 'web', 'uses' => 'DataController']);
 Route::resource('data', 'DataController');
-Route::get('/saldo','DataController@getSaldo');
+Route::get('/g','DataController@g'); //CATATAN untuk get jquery
 
 
 Route::get('/user', 'UsersController@index');

@@ -23,11 +23,15 @@
   "lists": [
     {
       "name": "KERJAKAN",
-      "hidden": true
+      "hidden": false
     },
     {
       "name": "CATATAN",
       "hidden": true
+    },
+    {
+      "name": "SELESAI",
+      "hidden": false
     },
     {
       "name": "XXX",
@@ -39,11 +43,11 @@
     },
     {
       "name": "BENERIN",
-      "hidden": false
+      "hidden": true
     },
     {
       "name": "bar",
-      "hidden": true
+      "hidden": false
     }
   ],
   "marked": {

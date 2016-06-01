@@ -85,10 +85,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
     <script>
-    $.get( "{{url('/saldo')}}", function( data ) {
+    $.get( "{{url('/g?op=getsaldo')}}", function( data ) {
       var saldo = data.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
       $( "#saldo" ).html( "Rp. "+ saldo );
-      $( "#saldoData" ).html( "Rp. "+ saldo );
+      // $( "#saldoData" ).html( "Rp. "+ saldo );
     });
     $('.rp').each(function(){
         text = $(this).text().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
@@ -96,5 +96,29 @@
     });
 
     </script>
+    @if (Request::route()->getName() == 'data.index')
+      @if (Request::has('dari') and Request::has('ke'))
+        <script>
+            console.log("search dari ke");
+            $.get( "{{url('/g?op=getsaldodarike')}}&dari={{Request::get('dari')}}&ke={{Request::get('ke')}}", function( data ) {
+              var saldo = data.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+              $( "#saldoData" ).html( "Rp. "+ saldo );
+            });
+        </script>
+      @else
+        <script>
+        $.get( "{{url('/g?op=getsaldo')}}", function( data ) {
+          var saldo = data.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+          $( "#saldoData" ).html( "Rp. "+ saldo );
+        });
+        </script>
+      @endif
+
+
+      <script>
+      console.log("data");
+      </script>
+    @endif
+
 </body>
 </html>

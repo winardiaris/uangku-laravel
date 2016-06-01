@@ -22,7 +22,9 @@ class DataController extends Controller
      */
     public function index()
     {
-      $search = \Request::get('s'); //<-- we use global request to get the param of URI
+      $search = \Request::get('s'); //<-- use global request
+      $dari = \Request::get('dari'); //<-- use global request
+      $ke = \Request::get('ke'); //<-- use global request
       $users_id =  Auth::user()->id;
 
       if(isset($search)){
@@ -36,7 +38,13 @@ class DataController extends Controller
                 })
                 ->orderBy('date','desc')
                 ->paginate(30);
-      }else{
+      }
+      elseif (isset($dari) and isset($ke)) { //SELESAI search date dari ke
+        $dari = \Request::get('dari'); //<-- use global request
+        $ke = \Request::get('ke'); //<-- use global request
+        $data = \App\Data::where('users_id',$users_id)->whereBetween('date',[$dari,$ke])->orderBy('date','desc')->paginate(30);
+      }
+      else{
         $data = \App\Data::where('users_id',$users_id)->orderBy('date','desc')->paginate(30);
       }
     // dd($data);
@@ -145,12 +153,41 @@ class DataController extends Controller
       return redirect()->route('data.index');
     }
 
-    public function getSaldo(){//melihatkan saldo
+    public function getSaldo(){//melihatkan saldo semua
       $users_id =  Auth::user()->id;
 
       $in = \App\Data::where('type','in')->where('users_id',$users_id)->select('value')->sum('value');
       $out = \App\Data::where('type','out')->where('users_id',$users_id)->select('value')->sum('value');
       $saldo = (int)$in - (int)$out;
       return $saldo;
+    }
+
+    public function getSaldoDariKe(){
+      $users_id =  Auth::user()->id;
+      $dari = \Request::get('dari'); //<-- use global request
+      $ke = \Request::get('ke'); //<-- use global request
+
+      $in = \App\Data::where('type','in')->where('users_id',$users_id)->whereBetween('date',[$dari,$ke])->select('value')->sum('value');
+      $out = \App\Data::where('type','out')->where('users_id',$users_id)->whereBetween('date',[$dari,$ke])->select('value')->sum('value');
+      $saldo = (int)$in - (int)$out;
+
+      return $saldo;
+    }
+
+    public function g(){
+      $users_id =  Auth::user()->id;
+      $op = \Request::get('op');
+      switch ($op) {
+        case 'getsaldo':
+          return $this->getSaldo();
+          break;
+        case 'getsaldodarike':
+          return $this->getSaldoDariKe();
+          break;
+
+        default:
+          return "error";
+          break;
+      }
     }
 }
