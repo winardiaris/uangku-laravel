@@ -21,16 +21,16 @@
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach($data as $data )
+                      @foreach($data as $datas )
                       <tr>
-                        <td><a href="{{ route('data.show', $data) }}">{{$data->date}}</a></td>
-                        <td>{{$data->type}}</td>
-                        <td>{{$data->token}}</td>
-                        <td align="right"class="rp">{{$data->value}}</td>
-                        <td>{{$data->desc}}</td>
+                        <td><a href="{{ route('data.show', $datas) }}">{{$datas->date}}</a></td>
+                        <td>{{$datas->type}}</td>
+                        <td>{{$datas->token}}</td>
+                        <td align="right"class="rp">{{$datas->value}}</td>
+                        <td>{{$datas->desc}}</td>
                         <td>
-                          {!! Form::model($data, ['route' => ['data.destroy', $data], 'method'=>'delete', 'class' => 'form-inline'])!!}
-                          <a href="{{ route('data.edit', $data) }}" class="btn btn-xs btn-primary">Ubah</a>
+                          {!! Form::model($data, ['route' => ['data.destroy', $datas], 'method'=>'delete', 'class' => 'form-inline'])!!}
+                          <a href="{{ route('data.edit', $datas) }}" class="btn btn-xs btn-primary">Ubah</a>
                           {!! Form::submit('Hapus', ['class'=>'btn btn-xs btn-danger']) !!}
                           {!! Form::close() !!}
                         </td>
@@ -38,8 +38,9 @@
                       @endforeach
                     </tbody>
                   </table>
-                  <div class="text-right"> Saldo:    <b><span id="saldoData" style="margin-left:30px;"></span></b></div>
+                    <div class="text-right"> Saldo:    <b><span id="saldoData" style="margin-left:30px;"></span></b></div>
                   <hr>
+                  {{ $data->links() }}
                 </div>
             </div>
         </div>

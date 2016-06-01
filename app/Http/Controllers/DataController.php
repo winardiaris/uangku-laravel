@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Psr\Log\LoggerInterface as PsrLoggerInterface;
-
 use App\Http\Requests;
 use Auth;
 
@@ -36,12 +35,12 @@ class DataController extends Controller
                   ->orWhere('token','like','%'.$search.'%');
                 })
                 ->orderBy('date','desc')
-                ->get();
+                ->paginate(30);
       }else{
-        $data = \App\Data::where('users_id',$users_id)->get();
+        $data = \App\Data::where('users_id',$users_id)->orderBy('date','desc')->paginate(30);
       }
     // dd($data);
-   return view('data.index',['data' => $data]);
+   return view('data.index',compact('data'));
     }
 
     /**
