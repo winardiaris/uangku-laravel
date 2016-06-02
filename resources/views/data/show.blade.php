@@ -26,7 +26,35 @@
                     </tr>
                     <tr>
                       <th>Bukti Gambar</th>
-                      <td><a href="{{ asset('img/') }}/{{ $data->token_image }}">Lihat></a></td>
+                      <td>
+                      @if ($data->token_image)
+
+                          <a href="#" data-toggle="modal" data-target="#myModal">Lihat</a>
+                          <!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Bukti Gambar</h4>
+      </div>
+      <div class="modal-body">
+        <a href="{{ asset('img/') }}/{{ $data->token_image }}">unduh</a>
+        <img class="img-responsive" src="{{ asset('img/') }}/{{ $data->token_image }}">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+                      @else
+                           <i>Tidak ada gambar bukti</i>
+                      @endif
+                      </td>
                     </tr>
                     <tr>
                       <th>Keterangan</th>
