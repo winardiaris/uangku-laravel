@@ -9,7 +9,6 @@
 
                 <div class="panel-body">
                     <h2>Selamat Datang di Uangku</h2><br>
-                    <i>Catat keuangan mu!</i>
                 </div>
             </div>
         </div>

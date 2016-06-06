@@ -7,14 +7,16 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard</div>
                 <div class="panel-body">
-                  {{-- //KERJAKAN Chart }}
-                  {{-- //KERJAKAN select tanggal dari ke--}}
-                  {{-- //KERJAKAN select Bulan Tahun --}}
-                  {{-- //KERJAKAN select Tahun --}}
-                  disini diisi grafik
+                  <div id="chart"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+<script>
+$jsontahun = <?php echo json_encode($data); ?>
+</script>
 @endsection

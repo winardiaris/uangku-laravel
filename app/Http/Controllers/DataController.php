@@ -51,7 +51,7 @@ class DataController extends Controller
       }
 
       else{
-        $data = \App\Data::where('users_id',$users_id)->orderBy('date','desc')->paginate(30);
+        $data = \App\Data::where('users_id',$users_id)->orderBy('date','desc')->paginate(10);
       }
     // dd($data);
    return view('data.index',compact('data'));
