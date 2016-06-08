@@ -21,7 +21,6 @@ class CreateDataTable extends Migration
         $table->enum('type', ['in', 'out']);
         $table->double('value');
         $table->longText('desc');
-        $table->string('status',1);
         $table->timestamps();
       });
     }
