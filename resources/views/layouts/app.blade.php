@@ -21,6 +21,11 @@
         .fa-btn {
             margin-right: 6px;
         }
+        .navbar-brand img{
+          float:left;
+          width:20px;
+          margin-right:10px;
+        }
     </style>
 </head>
 <body id="app-layout">
@@ -38,7 +43,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Uangku
+                    <img src="{{asset('uangku-logo.png')}}"> Uangku
                 </a>
             </div>
 
