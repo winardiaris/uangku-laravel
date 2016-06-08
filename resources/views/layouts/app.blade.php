@@ -49,6 +49,7 @@
                     <li><a href="{{ url('/home') }}"><small><i class="fa fa-home"></i></small> Home</a></li>
                     <li><a href="{{ route('data.create') }}"><small><i class="fa fa-plus"></i></small> Tambah</a></li>
                     <li><a href="{{ url('/data') }}"><small><i class="fa fa-table"></i></small> Data</a></li>
+                    <li><a href="{{ url('/about') }}"><small><i class="fa fa-info"></i></small> Tentang</a></li>
                   </ul>
                   @endif
 
@@ -79,6 +80,7 @@
     @yield('content')
 
     <!-- JavaScripts -->
+    <script src="{{asset('js/Chart.js')}}" type="text/javascript"></script>
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <script>
@@ -91,21 +93,19 @@
         text = $(this).text().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
         $(this).html(text);
     });
-
-    </script>
-    @if (Request::route()->getName() == 'data.index')
-        <script>
         $.get( "{{url('/g?op=gettahundata')}}", function( data ) {
           var json = $.parseJSON(data);
+          console.log(data);
           console.log("banyak tahun: "+json.length);
             for(var i = 0; i <json.length;i++){
                 $('#tahun').append('<option value="'+json[i]+'">'+json[i]+'</option>');
             }
-            /* $( "#tahun" ).html( data ); */
-
         });
-        </script>
-    @endif
+        
+    $('#tahun').change(function(){
+      $('button#btntahun').click();
+    });
+    </script>
 @yield('js')
 </body>
 </html>

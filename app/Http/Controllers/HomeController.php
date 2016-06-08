@@ -26,16 +26,61 @@ class HomeController extends Controller
     public function index()
     {
       
-        $users_id =  Auth::user()->id;
-        $data = DB::select("select 
-          (select count(*) from `data` where `date` like '%2015%' and `users_id`='$users_id') as '2015' ,
-(select count(*) from `data` where `date` like '%2016%' and `users_id`='$users_id') as '2016' ");
+      $search = \Request::get('s'); //<-- use global request
+      $dari = \Request::get('dari'); //<-- use global request
+      $ke = \Request::get('ke'); //<-- use global request
+      $tahun = \Request::get('tahun'); //<-- use global request
+      $users_id =  Auth::user()->id;
+
+      if(isset($search)){
+        $data = \App\Data::where('users_id',$users_id)
+                ->select('date','type',DB::raw('SUM(value) as value'))
+                ->groupBy('date','type')
+                ->where(function($query){
+                  $search = \Request::get('s');
+                  $query->orWhere('desc','like','%'.$search.'%')
+                  ->orWhere('value','like','%'.$search.'%')
+                  ->orWhere('date','like','%'.$search.'%')
+                  ->orWhere('token','like','%'.$search.'%');
+                })
+                ->orderBy('date')
+                ->get();
+      }
+      elseif (isset($dari) and isset($ke)) { //SELESAI search date dari ke
+        $dari = \Request::get('dari'); //<-- use global request
+        $ke = \Request::get('ke'); //<-- use global request
+        $data = \App\Data::where('users_id',$users_id)
+                ->select('date','type',DB::raw('SUM(value) as value'))
+                ->groupBy('date','type')
+                ->whereBetween('date',[$dari,$ke])
+                ->orderBy('date')
+                ->get();
+      }
+      elseif (isset($tahun)) { //SELESAI search tahun
+        $tahun = \Request::get('tahun'); //<-- use global request
+        $data = \App\Data::where('users_id',$users_id)
+                ->where('date','like','%'.$tahun.'%')
+                ->select('date','type',DB::raw('SUM(value) as value'))
+                ->groupBy('date','type')
+                ->orderBy('date')
+                ->get();
+      }
+
+      else{
+        $data = \App\Data::where('users_id',$users_id)
+                ->select('date','type',DB::raw('SUM(value) as value'))
+                ->groupBy('date','type')
+                ->orderBy('date')
+                ->get();
+      }
         return view('home',compact('data'));
-        /* return $data; */
     }
     public function welcome()
     {
         return view('welcome');
+    }
+    public function about(){
+      return view('about');
     }
 
 }

@@ -22,3 +22,5 @@ Route::get('/g','DataController@g'); //CATATAN untuk get jquery
 Route::get('/user', 'UsersController@index');
 Route::get('/user/setting', 'UsersController@edit');
 Route::post('/user/update', 'UsersController@update');
+
+Route::get('/about', 'HomeController@about');
