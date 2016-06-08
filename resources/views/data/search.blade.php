@@ -34,7 +34,7 @@
   <select class="form-control" name="tahun" id="tahun">
   </select>
   <span class="input-group-btn">
-    <button class="btn btn-default-sm" type="submit">
+    <button class="btn btn-default-sm" type="submit" id="btntahun">
       <i class="fa fa-search"></i>
     </button>
   </span>

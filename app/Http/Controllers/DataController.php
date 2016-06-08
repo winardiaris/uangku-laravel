@@ -51,9 +51,8 @@ class DataController extends Controller
       }
 
       else{
-        $data = \App\Data::where('users_id',$users_id)->orderBy('date','desc')->paginate(10);
+        $data = \App\Data::where('users_id',$users_id)->orderBy('date','desc')->paginate(30);
       }
-    // dd($data);
    return view('data.index',compact('data'));
     }
 
@@ -171,13 +170,13 @@ class DataController extends Controller
     public function getTahunData(){
       $users_id =  Auth::user()->id;
       $arr = array();
-      $tahun = \App\Data::where('users_id',$users_id)->select('date')->get();
-      foreach($tahun as $date){
-       $t = explode('-',$date['date']); 
-        array_push($arr,$t[0]);
+      $tahun = \App\Data::where('users_id',$users_id)->select('date')->groupBy('date')->get();
+      foreach($tahun as $tahun_){
+        $t=substr($tahun_['date'],0,4);
+        array_push($arr,$t);
       }
-      $return = array_unique($arr);
-      return json_encode($return);
+      $r=array_values(array_unique($arr));
+      return json_encode($r);
     }
 
     public function g(){
