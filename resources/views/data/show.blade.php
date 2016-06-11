@@ -14,7 +14,13 @@
                     </tr>
                     <tr>
                       <th>Tipe Keuangan</th>
-                      <td>{{ $data->type }}</td>
+                        <td>
+                            @if($data->type == 'in')
+                                <i class="fa fa-plus-circle text-success"></i> Pemasukan
+                            @else
+                                <i class="fa fa-minus-circle text-danger"></i> Pengeluaran
+                            @endif
+                        </td>
                     </tr>
                     <tr>
                       <th>Jumlah</th>
@@ -52,7 +58,8 @@
   </div>
 </div>
                       @else
-                           <i>Tidak ada gambar bukti</i>
+                         <i class="fa fa-info-circle text-warning"></i> 
+                        <i>Tidak ada gambar bukti</i>
                       @endif
                       </td>
                     </tr>

@@ -7,11 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Data</div>
                 <div class="panel-body">
-
-                  @include('data.search',['url'=>'data','link'=>'data'])
-                  {{-- //KERJAKAN select tanggal dari ke--}}
-                  {{-- //KERJAKAN select Bulan Tahun --}}
-                  {{-- //KERJAKAN select Tahun --}}
+                  <div class="table-responsive">>
                   <table class='table table-striped table-bordered table-hover table-condensed'>
                     <thead>
                       <tr>
@@ -27,7 +23,13 @@
                       @foreach($data as $datas )
                       <tr>
                         <td><a href="{{ route('data.show', $datas) }}">{{$datas->date}}</a></td>
-                        <td>{{$datas->type}}</td>
+                        <td align="center">
+                            @if($datas->type == 'in')
+                                <i class="fa fa-plus-circle text-success"></i>
+                            @else
+                                <i class="fa fa-minus-circle text-danger"></i>
+                            @endif
+                        </td>
                         <td>{{$datas->token}}</td>
                         <td align="right"class="rp">{{$datas->value}}</td>
                         <td>{{$datas->desc}}</td>
@@ -41,6 +43,7 @@
                       @endforeach
                     </tbody>
                   </table>
+                  </div>
                   {{-- //SELESAI saldo berdasarkan search--}}
                  <div class="text-right">Saldo: <b><span class="rp" style="margin-left:30px"> 
                    @if (Request::route()->getName() == 'data.index')
