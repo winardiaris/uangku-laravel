@@ -12,7 +12,7 @@ class CreateDataTable extends Migration
      */
     public function up()
     {
-      Schema::create('data', function($table){
+      Schema::create('data', function($table) {
         $table->increments('id');
         $table->integer('users_id');
         $table->date('date');
