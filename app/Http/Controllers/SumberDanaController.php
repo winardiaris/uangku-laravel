@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-
+use App\SumberDana;
 class SumberDanaController extends Controller
 {
     /**
@@ -15,7 +15,8 @@ class SumberDanaController extends Controller
      */
     public function index()
     {
-        //
+      $data = SumberDana::get();
+        return view('sumberdana.index',compact('data'));
     }
 
     /**
@@ -25,7 +26,7 @@ class SumberDanaController extends Controller
      */
     public function create()
     {
-        //
+        return view('sumberdana.create');
     }
 
     /**
@@ -48,6 +49,8 @@ class SumberDanaController extends Controller
     public function show($id)
     {
         //
+        $data = SumberDana::findOrFail($id);
+        return view('sumberdana.show',compact('data'));
     }
 
     /**
@@ -58,7 +61,9 @@ class SumberDanaController extends Controller
      */
     public function edit($id)
     {
-        //
+      //
+        $data = SumberDana::findOrFail($id);
+        return view('sumberdana.edit',compact('data'));
     }
 
     /**

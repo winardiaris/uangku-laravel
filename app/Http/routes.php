@@ -16,6 +16,7 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 Route::resource('data', 'DataController');
+Route::resource('sumberdana', 'SumberDanaController');
 Route::get('/g','DataController@g'); //CATATAN untuk get jquery
 
 
