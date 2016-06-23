@@ -8,7 +8,9 @@ $baseDir = dirname($vendorDir);
 return array(
     'AddRelationsToDataTable' => $baseDir . '/database/migrations/2016_05_30_155141_add_relations_to_data_table.php',
     'CreateDataTable' => $baseDir . '/database/migrations/2016_05_30_153918_create_data_table.php',
+    'CreateNomorAkunTable' => $baseDir . '/database/migrations/2016_06_23_144451_create_nomor_akun_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+    'CreateSumberDanaTable' => $baseDir . '/database/migrations/2016_06_23_144501_create_sumber_dana_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DataSeeder' => $baseDir . '/database/seeds/DataSeeder.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
@@ -517,5 +519,4 @@ return array(
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
-    'UserSeeder' => $baseDir . '/database/seeds/UserSeeder.php',
 );

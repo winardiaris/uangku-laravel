@@ -301,7 +301,9 @@ class ComposerStaticInitf00a52ce736c15298036b81900e5fb2c
     public static $classMap = array (
         'AddRelationsToDataTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_30_155141_add_relations_to_data_table.php',
         'CreateDataTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_30_153918_create_data_table.php',
+        'CreateNomorAkunTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_23_144451_create_nomor_akun_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+        'CreateSumberDanaTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_23_144501_create_sumber_dana_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DataSeeder' => __DIR__ . '/../..' . '/database/seeds/DataSeeder.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
@@ -810,7 +812,6 @@ class ComposerStaticInitf00a52ce736c15298036b81900e5fb2c
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
-        'UserSeeder' => __DIR__ . '/../..' . '/database/seeds/UserSeeder.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
