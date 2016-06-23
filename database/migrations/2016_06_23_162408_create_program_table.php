@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNomorAkunTable extends Migration
+class CreateProgramTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,11 @@ class CreateNomorAkunTable extends Migration
      */
     public function up()
     {
-      Schema::create('nomor_akun',function($table){
-        $table->string('nomor_akun');
-        $table->string('nama_akun');
-        $table->primary('nomor_akun');
-        $table->timestamps();
-      });
+        Schema::create('program', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('keterangan');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -27,6 +26,6 @@ class CreateNomorAkunTable extends Migration
      */
     public function down()
     {
-      Schema::drop('nomor_akun');
+        Schema::drop('program');
     }
 }

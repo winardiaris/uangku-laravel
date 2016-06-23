@@ -12,7 +12,16 @@ class CreateSumberDanaTable extends Migration
      */
     public function up()
     {
-        //
+      Schema::create('sumber_dana',function($table){
+        $table->increments('id');
+        $table->string('nama_sumber_dana');
+        $table->longText('alamat');
+        $table->string('telepon');
+        $table->string('fax');
+        $table->string('email');
+        $table->string('website');
+        $table->timestamps();
+      });
     }
 
     /**
@@ -22,6 +31,6 @@ class CreateSumberDanaTable extends Migration
      */
     public function down()
     {
-        //
+      Schema::drop('sumber_dana');
     }
 }

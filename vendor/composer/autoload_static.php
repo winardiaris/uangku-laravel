@@ -299,10 +299,11 @@ class ComposerStaticInitf00a52ce736c15298036b81900e5fb2c
     );
 
     public static $classMap = array (
-        'AddRelationsToDataTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_30_155141_add_relations_to_data_table.php',
+        'AddRelationToTableData' => __DIR__ . '/../..' . '/database/migrations/2016_06_23_163124_add_relation_to_table_data.php',
         'CreateDataTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_30_153918_create_data_table.php',
         'CreateNomorAkunTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_23_144451_create_nomor_akun_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+        'CreateProgramTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_23_162408_create_program_table.php',
         'CreateSumberDanaTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_23_144501_create_sumber_dana_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DataSeeder' => __DIR__ . '/../..' . '/database/seeds/DataSeeder.php',
