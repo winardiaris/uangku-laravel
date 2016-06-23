@@ -1,37 +1,37 @@
 <div class="col-lg-6">
   <div class="form-group">
-      {!! Form::label('type', 'Jenis Keuangan:', ['class' => 'control-label']) !!}
-      {!! Form::select('type', ['in' => 'Pemasukan', 'out' => 'Pengeluaran'],null, ['class'=>'form-control']) !!}
+      {!! Form::label('tipe', 'Jenis Keuangan:', ['class' => 'control-label']) !!}
+      {!! Form::select('tipe', ['masuk' => 'Pemasukan', 'keluar' => 'Pengeluaran'],null, ['class'=>'form-control']) !!}
   </div>
 </div>
 
 <div class="col-lg-6">
   <div class="form-group">
-      {!! Form::label('date', 'Tanggal:', ['class' => 'control-label']) !!}
-      {!! Form::date('date', null, ['class' => 'form-control']) !!}
+      {!! Form::label('tanggal', 'Tanggal:', ['class' => 'control-label']) !!}
+      {!! Form::date('tanggal', null, ['class' => 'form-control']) !!}
   </div>
 </div>
 <div class="col-lg-12">
   <div class="form-group">
-    {!! Form::label('value', 'Jumlah:', ['class' => 'control-label']) !!}
-    {!! Form::number('value', null, ['class' => 'form-control']) !!}
+    {!! Form::label('jumlah', 'Jumlah:', ['class' => 'control-label']) !!}
+    {!! Form::number('jumlah', null, ['class' => 'form-control']) !!}
   </div>
 </div>
 <div class="col-lg-6">
   <div class="form-group">
-    {!! Form::label('token', 'No Bukti:', ['class' => 'control-label']) !!}
-    {!! Form::text('token', null, ['class' => 'form-control']) !!}
+    {!! Form::label('bukti', 'No Bukti:', ['class' => 'control-label']) !!}
+    {!! Form::text('bukti', null, ['class' => 'form-control']) !!}
   </div>
 </div>
 <div class="col-lg-6">
   <div class="form-group">
-    {!! Form::label('token_img', 'Photo Bukti:', ['class' => 'control-label']) !!}
-    {!! Form::file('token_img', null, ['class' => 'form-control']) !!}
+    {!! Form::label('bukti_gbr', 'Photo Bukti:', ['class' => 'control-label']) !!}
+    {!! Form::file('bukti_gbr', null, ['class' => 'form-control']) !!}
   </div>
 </div>
 <div class="col-lg-12">
   <div class="form-group">
-      {!! Form::label('desc', 'Keterangan:', ['class' => 'control-label']) !!}
-      {!! Form::textarea('desc', null, ['class' => 'form-control']) !!}
+      {!! Form::label('keterangan', 'Keterangan:', ['class' => 'control-label']) !!}
+      {!! Form::textarea('keterangan', null, ['class' => 'form-control']) !!}
   </div>
 </div>

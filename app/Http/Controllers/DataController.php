@@ -32,26 +32,26 @@ class DataController extends Controller
         $data = \App\Data::where('users_id',$users_id)
                 ->where(function($query){
                   $search = \Request::get('s');
-                  $query->orWhere('desc','like','%'.$search.'%')
-                  ->orWhere('value','like','%'.$search.'%')
-                  ->orWhere('date','like','%'.$search.'%')
-                  ->orWhere('token','like','%'.$search.'%');
+                  $query->orWhere('keterangan','like','%'.$search.'%')
+                  ->orWhere('jumlah','like','%'.$search.'%')
+                  ->orWhere('tanggal','like','%'.$search.'%')
+                  ->orWhere('bukti','like','%'.$search.'%');
                 })
-                ->orderBy('date','desc')
+                ->orderBy('tanggal','desc')
                 ->paginate(30);
       }
-      elseif (isset($dari) and isset($ke)) { //SELESAI search date dari ke
+      elseif (isset($dari) and isset($ke)) { //SELESAI search tanggal dari ke
         $dari = \Request::get('dari'); //<-- use global request
         $ke = \Request::get('ke'); //<-- use global request
-        $data = \App\Data::where('users_id',$users_id)->whereBetween('date',[$dari,$ke])->orderBy('date','desc')->paginate(30);
+        $data = \App\Data::where('users_id',$users_id)->whereBetween('tanggal',[$dari,$ke])->orderBy('tanggal','desc')->paginate(30);
       }
       elseif (isset($tahun)) { //SELESAI search tahun
         $tahun = \Request::get('tahun'); //<-- use global request
-        $data = \App\Data::where('users_id',$users_id)->where('date','like','%'.$tahun.'%')->orderBy('date','desc')->paginate(30);
+        $data = \App\Data::where('users_id',$users_id)->where('tanggal','like','%'.$tahun.'%')->orderBy('tanggal','desc')->paginate(30);
       }
 
       else{
-        $data = \App\Data::where('users_id',$users_id)->orderBy('date','desc')->paginate(30);
+        $data = \App\Data::where('users_id',$users_id)->orderBy('tanggal','desc')->paginate(30);
       }
    return view('data.index',compact('data'));
     }
@@ -78,13 +78,13 @@ class DataController extends Controller
       $users_id =  Auth::user()->id;
       $request['users_id']=$users_id;
 
-      if ($request->hasFile('token_img')) {
-        $photo = $request->file('token_img');
+      if ($request->hasFile('bukti_gbr')) {
+        $photo = $request->file('bukti_gbr');
         $filename = str_random(6) . "." . $photo->getClientOriginalExtension();
         $path = public_path() . '/img';
         $photo->move($path, $filename);
 
-        $request['token_image']=$filename;
+        $request['bukti_gambar']=$filename;
 
         // \App\Data::create($request);
         // return dd($request->all());
@@ -131,13 +131,13 @@ class DataController extends Controller
     public function update(Request $request, $id,PsrLoggerInterface $log)
     {
       $data = \App\Data::findOrFail($id);
-      if ($request->hasFile('token_img')) {
-        $photo = $request->file('token_img');
+      if ($request->hasFile('bukti_gbr')) {
+        $photo = $request->file('bukti_gbr');
         $filename = str_random(6) . "." . $photo->getClientOriginalExtension();
         $path = public_path() . '/img';
         $photo->move($path, $filename);
 
-        $request['token_image']=$filename;
+        $request['bukti_gambar']=$filename;
       }
 
       $data->update($request->all());
@@ -161,8 +161,8 @@ class DataController extends Controller
     public function getSaldo(){//melihatkan saldo semua
       $users_id =  Auth::user()->id;
 
-      $in = \App\Data::where('type','in')->where('users_id',$users_id)->select('value')->sum('value');
-      $out = \App\Data::where('type','out')->where('users_id',$users_id)->select('value')->sum('value');
+      $in = \App\Data::where('tipe','in')->where('users_id',$users_id)->select('jumlah')->sum('jumlah');
+      $out = \App\Data::where('tipe','out')->where('users_id',$users_id)->select('jumlah')->sum('jumlah');
       $saldo = (int)$in - (int)$out;
       return $saldo;
     }
@@ -170,9 +170,9 @@ class DataController extends Controller
     public function getTahunData(){
       $users_id =  Auth::user()->id;
       $arr = array();
-      $tahun = \App\Data::where('users_id',$users_id)->select('date')->groupBy('date')->get();
+      $tahun = \App\Data::where('users_id',$users_id)->select('tanggal')->groupBy('tanggal')->get();
       foreach($tahun as $tahun_){
-        $t=substr($tahun_['date'],0,4);
+        $t=substr($tahun_['tanggal'],0,4);
         array_push($arr,$t);
       }
       $r=array_values(array_unique($arr));
