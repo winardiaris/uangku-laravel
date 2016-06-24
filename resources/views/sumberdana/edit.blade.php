@@ -6,9 +6,9 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Edit</div>
                 <div class="panel-body">
-                  {!! Form::model($data, ['route' => ['data.update', $data], 'method'=>'PUT','files'=>true])!!}
+                  {!! Form::model($data, ['route' => ['sumberdana.update', $data], 'method'=>'PUT','files'=>true])!!}
 
-                  @include('data.form')
+                  @include('sumberdana.form')
                   <div class="col-lg-12">
                     {!! Form::submit('Perbaharui', ['class' => 'btn btn-primary']) !!}
                   </div>

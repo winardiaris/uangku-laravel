@@ -8,38 +8,30 @@
                 <div class="panel-heading">Data</div>
                 <div class="panel-body">
                   <div class="col-lg-12">
-                  @include('data.search',['url'=>'data','link'=>'data'])
+                  @include('sumberdana.search',['url'=>'data','link'=>'data'])
                   </div>
                   <div class="col-lg-12">
                   <div class="table-responsive">
-                  <table class='table table-striped table-bordered table-hover table-condensed'>
+                  <table class='table table-striped  table-hover table-condensed'>
                     <thead>
                       <tr>
-                        <th width="100px">Tanggal</th>
-                        <th width="50px">Tipe</th>
-                        <th width="100px">No Bukti</th>
-                        <th width="150px">Jumlah</th>
-                        <th>Keterangan</th>
+                        <th width="10px">ID</th>
+                        <th width="200px">Sumber Dana</th>
+                        <th width="100px">Telepon</th>
+                        <th width="">Alamat</th>
                         <th width="100px"></th>
                       </tr>
                     </thead>
                     <tbody>
                       @foreach($data as $datas )
                       <tr>
-                        <td><a href="{{ route('data.show', $datas) }}">{{$datas->date}}</a></td>
-                        <td align="center">
-                            @if($datas->type == 'in')
-                                <i class="fa fa-plus-circle text-success"></i>
-                            @else
-                                <i class="fa fa-minus-circle text-danger"></i>
-                            @endif
-                        </td>
-                        <td>{{$datas->token}}</td>
-                        <td align="right"class="rp">{{$datas->value}}</td>
-                        <td>{{$datas->desc}}</td>
+                        <td><a href="{{ route('sumberdana.show', $datas) }}">{{$datas->id}}</a></td>
+                        <td>{{$datas->nama_sumber_dana}}</td>
+                        <td>{{$datas->telepon}}</td>
+                        <td>{{$datas->alamat}}</td>
                         <td>
-                          {!! Form::model($data, ['route' => ['data.destroy', $datas], 'method'=>'delete', 'class' => 'delete'])!!}
-                            <a href="{{ route('data.edit', $datas) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+                          {!! Form::model($data, ['route' => ['sumberdana.destroy', $datas], 'method'=>'delete', 'class' => 'delete'])!!}
+                            <a href="{{ route('sumberdana.edit', $datas) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
                             <button type="submit" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button>
                           {!! Form::close() !!}
                         </td>
@@ -50,14 +42,6 @@
                   </div>
                   </div>
                   {{-- //SELESAI saldo berdasarkan search--}}
-                 <div class="text-right">Saldo: <b><span class="rp" style="margin-left:30px"> 
-                   @if (Request::route()->getName() == 'data.index')
-                      {{$data->where('type','in')->sum('value')-$data->where('type','out')->sum('value')}}
-                   @endif
-                </span></b></div>
-    
-                  <hr>
-                  {{-- //SELESAI Pagination --}}
                   {{ $data->links() }}
                 </div>
             </div>

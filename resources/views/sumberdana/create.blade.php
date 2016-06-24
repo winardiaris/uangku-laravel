@@ -6,9 +6,9 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Tambah</div>
                 <div class="panel-body">
-                  {!! Form::open([ 'route' => 'data.store','files'=>true]) !!}
+                  {!! Form::open([ 'route' => 'sumberdana.store','files'=>true]) !!}
 
-                  @include('data.form')
+                  @include('sumberdana.form')
                   <div class="col-lg-12">
 
                     {!! Form::submit('Simpan', ['class' => 'btn btn-primary']) !!}

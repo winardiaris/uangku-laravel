@@ -1,37 +1,37 @@
 <div class="col-lg-6">
   <div class="form-group">
-      {!! Form::label('tipe', 'Jenis Keuangan:', ['class' => 'control-label']) !!}
-      {!! Form::select('tipe', ['masuk' => 'Pemasukan', 'keluar' => 'Pengeluaran'],null, ['class'=>'form-control']) !!}
+      {!! Form::label('nama_sumber_dana', 'Nama:', ['class' => 'control-label']) !!}
+      {!! Form::text('nama_sumber_dana',null, ['class'=>'form-control']) !!}
   </div>
 </div>
 
 <div class="col-lg-6">
   <div class="form-group">
-      {!! Form::label('tanggal', 'Tanggal:', ['class' => 'control-label']) !!}
-      {!! Form::date('tanggal', null, ['class' => 'form-control']) !!}
-  </div>
-</div>
-<div class="col-lg-12">
-  <div class="form-group">
-    {!! Form::label('jumlah', 'Jumlah:', ['class' => 'control-label']) !!}
-    {!! Form::number('jumlah', null, ['class' => 'form-control']) !!}
+    {!! Form::label('telepon', 'Telepon:', ['class' => 'control-label']) !!}
+    {!! Form::text('telepon', null, ['class' => 'form-control']) !!}
   </div>
 </div>
 <div class="col-lg-6">
   <div class="form-group">
-    {!! Form::label('bukti', 'No Bukti:', ['class' => 'control-label']) !!}
-    {!! Form::text('bukti', null, ['class' => 'form-control']) !!}
+    {!! Form::label('fax', 'Fax:', ['class' => 'control-label']) !!}
+    {!! Form::text('fax', null, ['class' => 'form-control']) !!}
   </div>
 </div>
 <div class="col-lg-6">
   <div class="form-group">
-    {!! Form::label('bukti_gbr', 'Photo Bukti:', ['class' => 'control-label']) !!}
-    {!! Form::file('bukti_gbr', null, ['class' => 'form-control']) !!}
+    {!! Form::label('email', 'Email:', ['class' => 'control-label']) !!}
+    {!! Form::text('email', null, ['class' => 'form-control']) !!}
+  </div>
+</div>
+<div class="col-lg-6">
+  <div class="form-group">
+    {!! Form::label('website', 'Website:', ['class' => 'control-label']) !!}
+    {!! Form::text('website', null, ['class' => 'form-control']) !!}
   </div>
 </div>
 <div class="col-lg-12">
   <div class="form-group">
-      {!! Form::label('keterangan', 'Keterangan:', ['class' => 'control-label']) !!}
-      {!! Form::textarea('keterangan', null, ['class' => 'form-control']) !!}
+      {!! Form::label('alamat', 'Alamat:', ['class' => 'control-label']) !!}
+      {!! Form::textarea('alamat', null, ['class' => 'form-control']) !!}
   </div>
 </div>

@@ -13,10 +13,13 @@ class SumberDanaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
+      $this->middleware('auth');
+    }
     public function index()
     {
-      $data = SumberDana::get();
-        return view('sumberdana.index',compact('data'));
+      $data = SumberDana::orderBy('id','asc')->paginate('30');
+      return view('sumberdana.index',compact('data'));
     }
 
     /**
@@ -37,7 +40,8 @@ class SumberDanaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      SumberDana::create($request->all()) ;
+      return redirect()->route('sumberdana.index');
     }
 
     /**
@@ -75,7 +79,10 @@ class SumberDanaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $sumberdana=SumberDana::findOrFail($id);
+      $sumberdana-update($request->all());
+      return redirect()->route('sumberdana.index');
+
     }
 
     /**
@@ -86,6 +93,7 @@ class SumberDanaController extends Controller
      */
     public function destroy($id)
     {
-        //
+      SumberDana::findOrFail($id)->delete();
+      return redirect()->route('sumberdana.index');
     }
 }
