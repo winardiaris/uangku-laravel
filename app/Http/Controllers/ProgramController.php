@@ -3,28 +3,34 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Program;
 use App\Http\Requests;
-use App\NomorAkun;
-class NomorAkunController extends Controller
+
+class ProgramController extends Controller
 {
      public function __construct(){
       $this->middleware('auth');
     }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
+        //
       $search = \Request::get('s');
       if(isset($search)){
-        $data=NomorAkun::where('nomor_akun','like','%'.$search.'%')
-          ->orWhere('nama_akun','like','%'.$search.'%')
-                              ->orderBy('nomor_akun','asc')
+        $data=Program::where('program','like','%'.$search.'%')
+          ->orWhere('program','like','%'.$search.'%')
+                              ->orderBy('program','asc')
                               ->paginate(30);
 
       }else{
-        $data = NomorAkun::orderBy('nomor_akun','asc')->paginate(30);
+        $data = Program::orderBy('program','asc')->paginate(30);
       }
 
-      return view('nomorakun.index',compact('data'));
+      return view('program.index',compact('data'));
     }
 
     /**
@@ -34,8 +40,7 @@ class NomorAkunController extends Controller
      */
     public function create()
     {
-      $data_nomor_akun=NomorAkun::whereRaw('LENGTH(nomor_akun)<=4')->orderBy('nomor_akun','asc')->pluck('nama_akun','nomor_akun');
-      return view('nomorakun.create',compact('data_nomor_akun'));
+        return view('program.create');
     }
 
     /**
@@ -46,8 +51,8 @@ class NomorAkunController extends Controller
      */
     public function store(Request $request)
     {
-      NomorAkun::create($request->all()) ;
-      return redirect()->route('nomorakun.index');
+      Program::create($request->all());
+      return redirect()->route('program.index');
     }
 
     /**
@@ -58,9 +63,8 @@ class NomorAkunController extends Controller
      */
     public function show($id)
     {
-        //
-        $data = NomorAkun::findOrFail($id);
-        return view('nomorakun.show',compact('data'));
+      $data = Program::findOrFail($id);
+      return view('program.view',compact('data'));
     }
 
     /**
@@ -71,10 +75,8 @@ class NomorAkunController extends Controller
      */
     public function edit($id)
     {
-      //
-      $data = NomorAkun::findOrFail($id);
-      $data_nomor_akun=NomorAkun::whereRaw('LENGTH(nomor_akun)<=4')->orderBy('nomor_akun','asc')->pluck('nama_akun','nomor_akun');
-      return view('nomorakun.edit',compact('data','data_nomor_akun'));
+      $data = Program::findOrFail($id);
+      return view('program.edit',compact('data'));
     }
 
     /**
@@ -86,10 +88,10 @@ class NomorAkunController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $nomorakun=NomorAkun::findOrFail($id);
-      $nomorakun->update($request->all());
-      return redirect()->route('nomorakun.index');
-
+      $data = Program::findOrFail($id);
+      $data->update($request->all());
+        
+      return redirect()->route('program.index');
     }
 
     /**
@@ -100,7 +102,8 @@ class NomorAkunController extends Controller
      */
     public function destroy($id)
     {
-      NomorAkun::findOrFail($id)->delete();
-      return redirect()->route('nomorakun.index');
+      Program::findOrFail($id)->delete();
+      return redirect()->route('program.index');
+      
     }
 }

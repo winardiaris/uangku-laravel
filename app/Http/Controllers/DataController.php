@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Psr\Log\LoggerInterface as PsrLoggerInterface;
 use App\Http\Requests;
 use Auth;
-
+use App\NomorAkun;
+use App\SumberDana;
+use App\Program;
 class DataController extends Controller
 {
     protected $log;
@@ -53,7 +55,7 @@ class DataController extends Controller
       else{
         $data = \App\Data::where('users_id',$users_id)->orderBy('tanggal','desc')->paginate(30);
       }
-   return view('data.index',compact('data'));
+      return view('data.index',compact('data'));
     }
 
     /**
@@ -63,7 +65,11 @@ class DataController extends Controller
      */
     public function create()
     {
-        return view('data.create');
+      $data_nomor_akun=NomorAkun::whereRaw('LENGTH(nomor_akun)<=4')->orderBy('nomor_akun','asc')->pluck('nama_akun','nomor_akun');
+      $data_sumber_dana=SumberDana::orderBy('id','asc')->pluck('nama_sumber_dana','id');
+      $data_program=Program::orderBy('id','asc')->pluck('program','id');
+        
+        return view('data.create',compact('data_nomor_akun','data_sumber_dana','data_program'));
     }
 
     /**
@@ -118,7 +124,11 @@ class DataController extends Controller
     public function edit($id)
     {
       $data = \App\Data::findOrFail($id);
-      return view('data.edit', compact('data'));
+      $data_nomor_akun=NomorAkun::whereRaw('LENGTH(nomor_akun)<=4')->orderBy('nomor_akun','asc')->pluck('nama_akun','nomor_akun');
+      $data_sumber_dana=SumberDana::orderBy('id','asc')->pluck('nama_sumber_dana','id');
+      $data_program=Program::orderBy('id','asc')->pluck('program','id');
+        
+        return view('data.edit',compact('data_nomor_akun','data_sumber_dana','data_program','data'));
     }
 
     /**
@@ -161,8 +171,8 @@ class DataController extends Controller
     public function getSaldo(){//melihatkan saldo semua
       $users_id =  Auth::user()->id;
 
-      $in = \App\Data::where('tipe','in')->where('users_id',$users_id)->select('jumlah')->sum('jumlah');
-      $out = \App\Data::where('tipe','out')->where('users_id',$users_id)->select('jumlah')->sum('jumlah');
+      $in = \App\Data::where('tipe','masuk')->where('users_id',$users_id)->select('jumlah')->sum('jumlah');
+      $out = \App\Data::where('tipe','keluar')->where('users_id',$users_id)->select('jumlah')->sum('jumlah');
       $saldo = (int)$in - (int)$out;
       return $saldo;
     }

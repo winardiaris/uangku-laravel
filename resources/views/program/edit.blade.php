@@ -4,14 +4,13 @@
     <div class="row">
         <div class="col-md-12 ">
             <div class="panel panel-default">
-                <div class="panel-heading">Transaksi Keuangan</div>
+                <div class="panel-heading">Edit</div>
                 <div class="panel-body">
-                  {!! Form::open([ 'route' => 'data.store','files'=>true]) !!}
+                  {!! Form::model($data, ['route' => ['program.update', $data], 'method'=>'PUT','files'=>true])!!}
 
-                  @include('data.form')
+                  @include('program.form')
                   <div class="col-lg-12">
-
-                    {!! Form::submit('Simpan', ['class' => 'btn btn-primary']) !!}
+                    {!! Form::submit('Perbaharui', ['class' => 'btn btn-primary']) !!}
                   </div>
                   {!! Form::close() !!}
                 </div>

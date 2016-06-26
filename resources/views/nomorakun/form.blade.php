@@ -1,37 +1,41 @@
 <div class="col-lg-6">
   <div class="form-group">
-      {!! Form::label('nama_sumber_dana', 'Nama:', ['class' => 'control-label']) !!}
-      {!! Form::text('nama_sumber_dana',null, ['class'=>'form-control']) !!}
+      {!! Form::label('nomor_akun', 'Nomor akun:', ['class' => 'control-label']) !!}
+      {!! Form::text('nomor_akun',null, ['class'=>'form-control']) !!}
   </div>
 </div>
 
 <div class="col-lg-6">
   <div class="form-group">
-    {!! Form::label('telepon', 'Telepon:', ['class' => 'control-label']) !!}
-    {!! Form::text('telepon', null, ['class' => 'form-control']) !!}
+    {!! Form::label('sub', 'Sub Dari:', ['class' => 'control-label']) !!}
+    {!! Form::select('sub',$data_nomor_akun, null, ['class' => 'form-control']) !!}
   </div>
 </div>
 <div class="col-lg-6">
   <div class="form-group">
-    {!! Form::label('fax', 'Fax:', ['class' => 'control-label']) !!}
-    {!! Form::text('fax', null, ['class' => 'form-control']) !!}
+    {!! Form::label('nama_akun', 'Nama akun:', ['class' => 'control-label']) !!}
+    {!! Form::text('nama_akun', null, ['class' => 'form-control']) !!}
   </div>
 </div>
-<div class="col-lg-6">
-  <div class="form-group">
-    {!! Form::label('email', 'Email:', ['class' => 'control-label']) !!}
-    {!! Form::text('email', null, ['class' => 'form-control']) !!}
-  </div>
-</div>
-<div class="col-lg-6">
-  <div class="form-group">
-    {!! Form::label('website', 'Website:', ['class' => 'control-label']) !!}
-    {!! Form::text('website', null, ['class' => 'form-control']) !!}
-  </div>
-</div>
-<div class="col-lg-12">
-  <div class="form-group">
-      {!! Form::label('alamat', 'Alamat:', ['class' => 'control-label']) !!}
-      {!! Form::textarea('alamat', null, ['class' => 'form-control']) !!}
-  </div>
-</div>
+
+@section('js')
+<script>
+$('select#sub option').each(function(){
+  v=$(this).val();
+  t=$(this).text();
+  
+  $(this).html("<b>"+v+"</b> - <span>"+t+"</span>") ;
+  
+  leng = v.length;
+  if(leng==2){
+    $(this).prepend("&nbsp;&nbsp;");
+  }
+  if(leng==4){
+    $(this).prepend("&nbsp;&nbsp;&nbsp;&nbsp;");
+  }
+  if(leng==6){
+    $(this).prepend("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+  }
+});
+</script>
+@endsection

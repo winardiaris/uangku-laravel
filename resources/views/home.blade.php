@@ -29,34 +29,34 @@ var dataPengeluaran = [];
 var ins=[];
 var outs=[];
 for(i=0;i<json.length;i++){
-  labels.push(json[i].date);
+  labels.push(json[i].tanggal);
   if(json[i].type=='in'){
-   ins.push(json[i].date) ;
+   ins.push(json[i].tanggal) ;
   }else{
-    outs.push(json[i].date) ;
+    outs.push(json[i].tanggal) ;
   }
 }
 
 var labelChart = jQuery.unique(labels);
 for(j=0;j<json.length;j++){
 
-  var adains = jQuery.inArray(json[j].date,outs);
-  var adaouts = jQuery.inArray(json[j].date,ins);
+  var adains = jQuery.inArray(json[j].tanggal,outs);
+  var adaouts = jQuery.inArray(json[j].tanggal,ins);
 
-  /* console.log(json[j].date+":"+adains+":"+adaouts); */
+  /* console.log(json[j].tanggal+":"+adains+":"+adaouts); */
   if(adains>=0 && adaouts>=0){
     if(json[j].type=='in'){
-      dataPemasukan.push(json[j].value);
+      dataPemasukan.push(json[j].jumlah);
     }else{
-      dataPengeluaran.push(json[j].value);
+      dataPengeluaran.push(json[j].jumlah);
     }
   }
   else if(adains>=0 && adaouts<0){
       dataPemasukan.push(0);
-      dataPengeluaran.push(json[j].value);
+      dataPengeluaran.push(json[j].jumlah);
   }
   else if(adains<0 && adaouts>=0){
-      dataPemasukan.push(json[j].value);
+      dataPemasukan.push(json[j].jumlah);
       dataPengeluaran.push(0);
   }
 }

@@ -25,11 +25,11 @@
                     <tbody>
                       @foreach($data as $datas )
                       <tr>
-                        <td><a href="{{ route('sumberdana.show', $datas) }}">{{$datas->id}}</a></td>
+                        <td>{{$datas->id}}</td>
                         <td>{{$datas->nama_sumber_dana}}</td>
                         <td>{{$datas->telepon}}</td>
                         <td>{{$datas->alamat}}</td>
-                        <td>
+                        <td align="right">
                           {!! Form::model($data, ['route' => ['sumberdana.destroy', $datas], 'method'=>'delete', 'class' => 'delete'])!!}
                             <a href="{{ route('sumberdana.edit', $datas) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
                             <button type="submit" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button>

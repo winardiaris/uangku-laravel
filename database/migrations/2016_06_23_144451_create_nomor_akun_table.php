@@ -14,6 +14,7 @@ class CreateNomorAkunTable extends Migration
     {
       Schema::create('nomor_akun',function($table){
         $table->string('nomor_akun');
+        $table->string('sub');
         $table->string('nama_akun');
         $table->primary('nomor_akun');
         $table->timestamps();

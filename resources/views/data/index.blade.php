@@ -16,27 +16,33 @@
                     <thead>
                       <tr>
                         <th width="100px">Tanggal</th>
-                        <th width="50px">Tipe</th>
-                        <th width="100px">No Bukti</th>
-                        <th width="150px">Jumlah</th>
+                        <th width="100px">Akun</th>
                         <th>Keterangan</th>
+                        <th>Debet</th>
+                        <th>Kredit</th>
                         <th width="100px"></th>
                       </tr>
                     </thead>
                     <tbody>
                       @foreach($data as $datas )
                       <tr>
-                        <td><a href="{{ route('data.show', $datas) }}">{{$datas->date}}</a></td>
-                        <td align="center">
-                            @if($datas->type == 'in')
-                                <i class="fa fa-plus-circle text-success"></i>
-                            @else
-                                <i class="fa fa-minus-circle text-danger"></i>
-                            @endif
-                        </td>
-                        <td>{{$datas->token}}</td>
-                        <td align="right"class="rp">{{$datas->value}}</td>
-                        <td>{{$datas->desc}}</td>
+                        <td><a href="{{ route('data.show', $datas) }}">{{$datas->tanggal}}</a></td>
+                        <td>{{$datas->nomor_akun_id}}</td>
+                        <td>{{$datas->keterangan}}</td>
+                        <td>
+                         @if($datas->tipe == 'masuk')
+                          {{$datas->jumlah}} 
+                         @else
+                          0
+                         @endif
+                         </td>
+                        <td>
+                         @if($datas->tipe == "keluar")
+                          {{$datas->jumlah}}
+                         @else
+                          0 
+                         @endif
+                         </td>
                         <td>
                           {!! Form::model($data, ['route' => ['data.destroy', $datas], 'method'=>'delete', 'class' => 'delete'])!!}
                             <a href="{{ route('data.edit', $datas) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
@@ -52,7 +58,7 @@
                   {{-- //SELESAI saldo berdasarkan search--}}
                  <div class="text-right">Saldo: <b><span class="rp" style="margin-left:30px"> 
                    @if (Request::route()->getName() == 'data.index')
-                      {{$data->where('type','in')->sum('value')-$data->where('type','out')->sum('value')}}
+                      {{$data->where('tipe','masuk')->sum('jumlah')-$data->where('tipe','keluar')->sum('jumlah')}}
                    @endif
                 </span></b></div>
     

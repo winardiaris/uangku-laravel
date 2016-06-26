@@ -54,7 +54,9 @@
                     <li><a href="{{ url('/home') }}"><small><i class="fa fa-home"></i></small> Home</a></li>
                     <li><a href="{{ route('data.create') }}"><small><i class="fa fa-plus"></i></small> Tambah</a></li>
                     <li><a href="{{ url('/data') }}"><small><i class="fa fa-table"></i></small> Data</a></li>
-                    <li><a href="{{ url('/about') }}"><small><i class="fa fa-info"></i></small> Tentang</a></li>
+                    <li><a href="{{ url('/sumberdana') }}"><i class="fa fa-users"></i> Sumber Dana</a></li>
+                    <li><a href="{{ url('/nomorakun') }}"><i class="fa fa-table"></i> Nomor Akun</a></li>
+                    <li><a href="{{ url('/program') }}"><i class="fa fa-table"></i> Program</a></li>
                   </ul>
                   @endif
 

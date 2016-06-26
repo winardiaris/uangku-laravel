@@ -1,0 +1,94 @@
+1,0,Assets
+11,1,Current Asset
+1101,11,Bank Mandiri
+1102,11,Bank BRI
+1103,11,Kas
+1104,11,Receivables
+110401,1104,Receivable – Staff
+110402,1104,Receivable – Third Parties
+110403,1104,Receivable – Program
+1105,11,Advance
+110501,1105,Travel Cost Advance
+110502,1105,Program Advance
+1106,11,Interest Receivable
+1107,11,Prepaid Expenses
+110701,1107,Prepaid Expenses – Rent
+110702,1107,Prepaid Expenses – Other
+12,1,Non Current Assets
+1201,12,Fixed Assets
+1202,12,Accumulated Depreciation
+2,0,Liabilities
+21,2,Current Liabilities
+2101,21,Trade Debtors/Suppliers
+2102,21,Salaries Payable
+2103,21,Accrued Exnpensed Within One Year
+2104,21,Accrued Tax Payable
+210401,2104,Value Added Tax
+210402,2104,Property Tax
+2105,21,Program Loans
+2106,21,Other Risks and Charges
+2107,21,Other Current Liabilities
+22,2,Non Current Liabilities
+2201,22,Loans – Third Parties
+2202,22,Other Amounts Payable – More Than One Year
+3,0,Net Assets
+31,3,Net Assets
+3101,31,Unrestricted
+3102,31,Restricted Temporary
+3103,31,Restricted
+4,0,Incomes
+41,4,Earnings
+4101,41,Grant and Donation
+4102,41,Contribution
+4103,41,Other Earnings
+42,4,Revenues
+4201,42,Fees Income
+4202,42,Sale of Product
+4203,42,Other Revenues
+43,4,Net Assets Released From Restrictions
+4301,43,Expiration of Time Restriction
+4302,43,Expiration of Program Restriction
+44,4,Other Incomes
+4401,44,Bank Interest
+4402,44,Gain/Loss on sale of asset
+4403,44,Exchange rate gain
+5,0,Expense
+51,5,General and Administratives Expenses
+5101,51,Staffs Salary
+5102,51,Staffs Insurance
+5103,51,Medical Subsidies
+5104,51,Travel Cost
+5105,51,Communication
+5106,51,Electricity and water
+5107,51,Meeting and Conference
+5108,51,"Office Supplies, Kitchen Utencil, Dringking Water, Newspaper"
+5109,51,Documentation
+5110,51,Rent
+5111,51,Vehicle – Repairs and Maintenance
+5112,51,Phosocopying / Printing Costs
+5113,51,"Bank charge (Transfer Fee,Cheque book,Tax,Stamp Duty)"
+5114,51,Courier / Postage Cost
+5115,51,Exchange Rate Loss
+52,5,Fund Raising
+5201,52,Staffs Salary
+5202,52,Staffs Capacity Building / Training
+5203,52,Documentation / Printing Costs
+5204,52,Communication
+5205,52,Other Fundraising Costs
+53,5,Other Expenses
+5301,53,Accumulated Depreciation
+54,5,Program/Project Expense
+5401,53,Professional Fee
+5402,53,Perdiem
+5403,53,Staffs Insurance
+5404,53,Travel Cost
+5405,53,Communication
+5406,53,Electricity and water
+5407,53,Recuitment Related Cost
+5408,53,"Office Supplies, Kitchen Utencil, Dringking Water, Newspaper"
+5409,53,Phosocopying / Printing Costs
+5410,53,Courier / Postage Cost
+5411,53,Communication
+5412,53,Documentation
+5413,53,Meeting and Conference
+5414,53,Purchase Material for Program/Project

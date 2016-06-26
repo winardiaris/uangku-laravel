@@ -8,26 +8,26 @@
                 <div class="panel-heading">Data</div>
                 <div class="panel-body">
                   <div class="col-lg-12">
-                  @include('nomorakun.search',['url'=>'nomorakun','link'=>'nomorakun'])
+                  @include('program.search',['url'=>'program','link'=>'program'])
                   </div>
                   <div class="col-lg-12">
                   <div class="table-responsive">
                   <table class='table table-striped  table-hover table-condensed'>
                     <thead>
                       <tr>
-                        <th width="30px">Nomor akun</th>
-                        <th width="200px">Nama Akun</th>
+                        <th width="30px">ID</th>
+                        <th width="200px">Program</th>
                         <th width="100px"></th>
                       </tr>
                     </thead>
                     <tbody>
                       @foreach($data as $datas )
                       <tr>
-                        <td class="nomor_akun">{{$datas->nomor_akun}}</td>
-                        <td>{{$datas->nama_akun}}</td>
+                        <td class="nomor_akun">{{$datas->id}}</td>
+                        <td>{{$datas->program}}</td>
                         <td align="right">
-                          {!! Form::model($data, ['route' => ['nomorakun.destroy', $datas], 'method'=>'delete', 'class' => 'delete'])!!}
-                            <a href="{{ route('nomorakun.edit', $datas->nomor_akun) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+                          {!! Form::model($data, ['route' => ['program.destroy', $datas], 'method'=>'delete', 'class' => 'delete'])!!}
+                            <a href="{{ route('program.edit', $datas->nomor_akun) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
                             <button type="submit" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button>
                           {!! Form::close() !!}
                         </td>
