@@ -30,7 +30,7 @@ var ins=[];
 var outs=[];
 for(i=0;i<json.length;i++){
   labels.push(json[i].tanggal);
-  if(json[i].type=='in'){
+  if(json[i].tipe=='masuk'){
    ins.push(json[i].tanggal) ;
   }else{
     outs.push(json[i].tanggal) ;
@@ -45,7 +45,7 @@ for(j=0;j<json.length;j++){
 
   /* console.log(json[j].tanggal+":"+adains+":"+adaouts); */
   if(adains>=0 && adaouts>=0){
-    if(json[j].type=='in'){
+    if(json[j].tipe=='masuk'){
       dataPemasukan.push(json[j].jumlah);
     }else{
       dataPengeluaran.push(json[j].jumlah);
