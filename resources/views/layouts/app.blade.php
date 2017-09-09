@@ -108,7 +108,7 @@
                 $('#tahun').append('<option value="'+json[i]+'">'+json[i]+'</option>');
             }
         });
-        
+
     $('#tahun').change(function(){
       $('button#btntahun').click();
     });
